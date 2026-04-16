@@ -1,0 +1,4 @@
+Modelo,Accuracy,F1 ponderado,Recall ponderado,Precision ponderada
+Arbol de Decision,0.6508,0.6181,0.6508,0.6095
+Random Forest,0.648,0.6126,0.648,0.6032
+Gradient Boosting,0.6268,0.6121,0.6268,0.604

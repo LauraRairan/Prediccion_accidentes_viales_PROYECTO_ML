@@ -1,0 +1,93 @@
+# ─────────────────────────────────────────────────────────
+# config.yaml — Parámetros globales del proyecto
+# Indian Road Accident Dataset — Predicción de Severidad
+# ─────────────────────────────────────────────────────────
+
+proyecto:
+  nombre: "Predicción de Severidad de Accidentes Viales en India"
+  dataset: "Indian Road Accident Dataset (2022–2025)"
+  target: "accident_severity"
+  clases: ["minor", "major", "fatal"]
+  seed: 42
+
+datos:
+  ruta: "../data/indian_roads_dataset.csv"
+  test_size: 0.20
+  stratify: true
+
+# Features base (Escenario A — sin risk_score)
+features_escenario_A:
+  - hour
+  - is_weekend
+  - is_peak_hour
+  - lanes
+  - temperature
+  - traffic_signal
+  - night_drive
+  - rush_hour
+  - bad_weather
+  - low_vis
+  - high_traffic
+  - high_risk_cause
+  - is_highway
+  - road_type
+  - weather
+  - visibility
+  - traffic_density
+  - cause
+  - day_of_week
+
+# Features con risk_score (Escenario B)
+features_escenario_B:
+  - hour
+  - is_weekend
+  - is_peak_hour
+  - lanes
+  - temperature
+  - traffic_signal
+  - night_drive
+  - rush_hour
+  - bad_weather
+  - low_vis
+  - high_traffic
+  - high_risk_cause
+  - is_highway
+  - road_type
+  - weather
+  - visibility
+  - traffic_density
+  - cause
+  - day_of_week
+  - risk_score  # Feature contextual — ver análisis de leakage en notebook 02
+
+variables_categoricas:
+  - road_type
+  - weather
+  - visibility
+  - traffic_density
+  - cause
+  - day_of_week
+
+hiperparametros:
+  arbol_decision:
+    max_depth: [5, 8, 12, 15]
+    min_samples_split: [2, 5, 10, 20]
+    min_samples_leaf: [1, 3, 5, 10]
+    criterion: ["gini", "entropy"]
+    class_weight: [null, "balanced"]
+
+  regresion_logistica:
+    C: [0.01, 0.1, 1, 10, 100]
+    solver: ["lbfgs", "saga"]
+    class_weight: [null, "balanced"]
+    max_iter: 1000
+
+validacion:
+  metodo: "StratifiedKFold"
+  n_splits: 5
+  shuffle: true
+  scoring: "f1_weighted"
+
+rutas_salida:
+  modelos: "../models/"
+  reportes: "../reports/"

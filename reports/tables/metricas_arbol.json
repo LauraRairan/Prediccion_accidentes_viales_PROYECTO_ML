@@ -1,0 +1,7 @@
+{
+  "modelo": "Arbol de Decision",
+  "accuracy": 0.6508,
+  "f1_weighted": 0.6181,
+  "recall_weighted": 0.6508,
+  "precision_weighted": 0.6095
+}
