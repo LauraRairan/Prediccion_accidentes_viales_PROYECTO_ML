@@ -120,8 +120,8 @@ Cada archivo tiene una única responsabilidad:
 ---
 ## Resultados
 
-| Modelo | Accuracy | F1 ponderado | Recomendado |
-|--------|---------|-------------|-------------|
+| Modelo | Accuracy | F1 ponderado |
+|--------|---------|-------------|
 | **Árbol de Decisión** | 0.630 | **0.615** | 
 | Random Forest | 0.666 | 0.608 |
 | Gradient Boosting | 0.670 | 0.605 |
